@@ -93,8 +93,8 @@ class ParseConfig
             else
               add(var_name, new_value)
             end
-          elsif /^\[(.+)\]$/.match(line).to_a != []
-            group = /^\[(.+)\]$/.match(line).to_a[1]
+          elsif /^\[(.+)\](\s*[\#;]+.*)?$/.match(line).to_a != []
+            group = /^\[(.+)\](\s*[\#;]+.*)?$/.match(line).to_a[1]
             add(group, {})
           elsif /\w+/.match(line)
             add(line.to_s.chomp.strip, true)
